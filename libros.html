@@ -3,87 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libros Oficiales | Probabilidad Maestría</title>
+    <title>Libros Recomendados | Probabilidad ITAM Maestría</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
     <header>
         <nav class="container">
-            <a href="index.html" class="logo">📊 Probabilidad Maestría</a>
+            <a href="index.html" class="logo">📊 Probabilidad Maestría ITAM</a>
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="libros.html">Libros</a></li>
+                <li><a href="libros.html" class="active">Libros</a></li>
                 <li><a href="ejercicios.html">Ejercicios</a></li>
+                <li><a href="https://github.com/SamuelOrduna/probability-python" target="_blank">GitHub</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="container">
-        <div class="content" style="max-width: 900px; margin: 40px auto;">
-            <h1>📚 Libros Oficiales</h1>
+        <div class="content">
+            <h1>📚 Libros Recomendados</h1>
+            <p>Estos son los libros de referencia utilizados para complementar el contenido riguroso de este curso basado en el Cuaderno de Ejercicios del ITAM.</p>
+
+            <h2>Libros Principales</h2>
 
             <div class="card">
-                <div class="card-title">Introduction to Probability (2nd Edition)</div>
-                <p><strong>Autores:</strong> Joseph K. Blitzstein & Jessica Hwang | <strong>Universidad:</strong> Harvard (Stat 110)</p>
-                <p>El libro oficial del curso de probabilidad de Harvard. Referencia primaria para semanas 1-8.</p>
-                <p><strong>ISBN:</strong> 9781138492561</p>
+                <div class="card-title">ITAM Cuaderno de Ejercicios de Probabilidad</div>
+                <p><strong>Universidad:</strong> Instituto Tecnológico Autónomo de México</p>
+                <p>La fuente principal de este curso. Contiene ejercicios rigurosos a nivel maestría cubriendo Fundamentos, Variables Aleatorias, Distribuciones, Multivariadas y Distribución Normal Multivariada.</p>
             </div>
 
             <div class="card">
-                <div class="card-title">All of Statistics</div>
-                <p><strong>Autor:</strong> Larry Wasserman | <strong>Universidad:</strong> CMU</p>
-                <p>Cobertura rigurosa de probabilidad e inferencia. Referencia para semanas 5-11.</p>
-                <p><strong>ISBN:</strong> 9780387402726</p>
+                <div class="card-title">Introduction to Probability (2nd Edition)</div>
+                <p><strong>Autores:</strong> Joseph K. Blitzstein & Jessica Hwang</p>
+                <p><strong>Universidad:</strong> Harvard University (Stat 110)</p>
+                <p>Combinación excelente de rigor matemático e intuición. Fundamentales para Capítulos 1-2. ISBN: 9781138492561</p>
+            </div>
+
+            <div class="card">
+                <div class="card-title">All of Statistics: A Concise Course in Statistical Inference</div>
+                <p><strong>Autor:</strong> Larry Wasserman</p>
+                <p><strong>Universidad:</strong> Carnegie Mellon University</p>
+                <p>Cobertura compacta y rigurosa de probabilidad e inferencia. Excelente para profundidad teórica. ISBN: 9780387402726</p>
             </div>
 
             <div class="card">
                 <div class="card-title">A First Course in Probability (10th Edition)</div>
                 <p><strong>Autor:</strong> Sheldon M. Ross</p>
-                <p>Estándar mundial con excelentes problemas y ejercicios.</p>
-                <p><strong>ISBN:</strong> 9780134689999</p>
+                <p>Estándar mundial con excelentes problemas, ejemplos claros y ejercicios desafiantes. ISBN: 9780134689999</p>
             </div>
+
+            <h2>Libros Avanzados</h2>
 
             <div class="card">
                 <div class="card-title">Statistical Inference (2nd Edition)</div>
                 <p><strong>Autores:</strong> George Casella & Roger L. Berger</p>
-                <p>Estándar para doctorados. Muy riguroso matemáticamente. Semanas 5, 10.</p>
-                <p><strong>ISBN:</strong> 9780534243128</p>
-            </div>
-
-            <div class="card">
-                <div class="card-title">Probability Theory: The Logic of Science</div>
-                <p><strong>Autor:</strong> E.T. Jaynes</p>
-                <p>Perspectiva bayesiana profunda. Filosoficamente riguroso. Semana 11.</p>
-                <p><strong>ISBN:</strong> 9780521592710</p>
-            </div>
-
-            <div class="card">
-                <div class="card-title">Bayesian Data Analysis (3rd Edition)</div>
-                <p><strong>Autores:</strong> Gelman, Carlin, Stern, et al.</p>
-                <p>Referencia moderna para análisis bayesiano y MCMC. Semanas 8, 11.</p>
-                <p><strong>ISBN:</strong> 9781439840955</p>
+                <p>El estándar para cursos de inferencia en doctorados. Muy riguroso matemáticamente. ISBN: 9780534243128</p>
             </div>
 
             <div class="card">
                 <div class="card-title">Probability: Theory and Examples (5th Edition)</div>
                 <p><strong>Autor:</strong> Rick Durrett</p>
-                <p>Nivel riguroso con teoría de la medida. Semana 12 (temas avanzados).</p>
-                <p><strong>ISBN:</strong> 9781108473682</p>
+                <p>Para estudiantes que quieran comprender la teoría de la medida subyacente. Nivel avanzado. ISBN: 9781108473682</p>
             </div>
 
-            <h2>Recursos Online</h2>
+            <div class="card">
+                <div class="card-title">Probability Theory: The Logic of Science</div>
+                <p><strong>Autor:</strong> E.T. Jaynes</p>
+                <p>Perspectiva bayesiana profunda y filosófica sobre la probabilidad. ISBN: 9780521592710</p>
+            </div>
 
-            <ul>
-                <li><strong>Harvard Stat 110:</strong> stat110.net - Todas las slides y materiales</li>
-                <li><strong>MIT OpenCourseWare:</strong> ocw.mit.edu - Cursos completos</li>
-                <li><strong>3Blue1Brown (YouTube):</strong> Visualizaciones excelentes de probabilidad</li>
-                <li><strong>StatQuest (YouTube):</strong> Josh Starmer explica conceptos de forma clara</li>
-            </ul>
+            <div class="card">
+                <div class="card-title">Bayesian Data Analysis (3rd Edition)</div>
+                <p><strong>Autores:</strong> Andrew Gelman, John B. Carlin, Hal S. Stern, et al.</p>
+                <p>Referencia moderna para análisis bayesiano práctico incluyendo MCMC. ISBN: 9781439840955</p>
+            </div>
+
+            <h2>Cómo Usar Esta Lista</h2>
+
+            <div class="objectives">
+                <div class="objectives-title">Estrategia de Estudio Recomendada</div>
+                <ul>
+                    <li><strong>Capítulos 1-2:</strong> Blitzstein & Hwang, luego Ross. Lee activamente con lápiz y papel.</li>
+                    <li><strong>Capítulos 3-4:</strong> Blitzstein + Wasserman. Compara explicaciones en ambos libros para visiones alternativas.</li>
+                    <li><strong>Capítulo 5:</strong> Wasserman + Ross. Verifica propiedades con ejemplos prácticos en Python.</li>
+                    <li><strong>Profundización:</strong> Casella & Berger para rigor teórico, Durrett para teoría de medida.</li>
+                </ul>
+            </div>
+
+            <h2>Recursos en Línea</h2>
+
+            <div class="card">
+                <div class="card-title">📺 Cursos en Video</div>
+                <ul>
+                    <li><strong>Harvard Stat 110:</strong> Joe Blitzstein's lectures on YouTube - excelentes explicaciones visuales</li>
+                    <li><strong>MIT OpenCourseWare:</strong> 6.041 Probabilistic Systems Analysis - contenido completo del MIT</li>
+                    <li><strong>3Blue1Brown:</strong> Essence of Probability - visualizaciones extraordinarias</li>
+                    <li><strong>StatQuest:</strong> Josh Starmer explica conceptos de forma clara y accesible</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-title">🔗 Sitios Web Académicos</div>
+                <ul>
+                    <li><strong>Harvard Stat 110 Website:</strong> stat110.net - slides, notas, exámenes</li>
+                    <li><strong>MIT OCW:</strong> ocw.mit.edu - cursos completos con materiales</li>
+                    <li><strong>AMS Open Math Notes:</strong> Acceso a apuntes de cursos universitarios</li>
+                    <li><strong>Math Stack Exchange:</strong> Comunidad para resolver dudas sobre conceptos</li>
+                </ul>
+            </div>
+
+            <h2>Consejos para Estudiar Matemáticas</h2>
+
+            <blockquote>
+                "Para leer un libro de matemáticas, necesitas leer con un lápiz y papel. Reproduce todos los cálculos, dibuja todos los diagramas, intenta los ejercicios. Si no estás escribiendo y calculando mientras lees, no estás leyendo realmente."
+            </blockquote>
+
+            <div class="card">
+                <div class="card-title">Método Activo de Aprendizaje</div>
+                <ol>
+                    <li><strong>Lectura inicial:</strong> Lee la sección sin tomar notas detalladas, solo entiende el flujo</li>
+                    <li><strong>Resumen de memoria:</strong> Cierra el libro y escribe un resumen de memoria en tus propias palabras</li>
+                    <li><strong>Lectura de revisión:</strong> Lee nuevamente para llenar huecos en tu comprensión</li>
+                    <li><strong>Ejercicios sin ayuda:</strong> Resuelve los ejercicios sin mirar las soluciones</li>
+                    <li><strong>Verificación:</strong> Compara tus respuestas con las soluciones</li>
+                    <li><strong>Análisis de errores:</strong> Si hay errores, entiende exactamente dónde y por qué fallaste</li>
+                </ol>
+            </div>
         </div>
     </main>
 
     <footer>
-        <p>🎓 Recursos de Aprendizaje | Basado en Harvard, MIT, CMU</p>
+        <p>🎓 Recursos de Aprendizaje Profesional | Nivel Maestría</p>
+        <p>Basado en ITAM y currículos de: Harvard, MIT, CMU, Stanford</p>
     </footer>
 
     <script src="js/main.js"></script>

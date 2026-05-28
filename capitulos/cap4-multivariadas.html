@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo 4: Distribuciones Multivariadas | ITAM Maestría</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.8.0/build/styles/atom-one-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.8.0/build/highlight.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="../index.html" class="logo">📊 Probabilidad Maestría ITAM</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../libros.html">Libros</a></li>
+                <li><a href="../ejercicios.html">Ejercicios</a></li>
+                <li><a href="https://github.com/SamuelOrduna/probability-python" target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <aside class="sidebar">
+            <div class="sidebar-title">Capítulos</div>
+            <ul class="chapters-list">
+                <li><a href="cap1-fundamentos.html">I. Fundamentos</a></li>
+                <li><a href="cap2-variables.html">II. Variables Aleatorias</a></li>
+                <li><a href="cap3-distribuciones.html">III. Distribuciones</a></li>
+                <li><a href="cap4-multivariadas.html" class="active">IV. Multivariadas</a></li>
+                <li><a href="cap5-normal-multivariada.html">V. Normal Multivariada</a></li>
+            </ul>
+        </aside>
+
+        <div class="content">
+            <h1>Capítulo 4: Distribuciones Multivariadas</h1>
+
+            <div class="objectives">
+                <div class="objectives-title">Objetivos del Capítulo</div>
+                <ul>
+                    <li>Entender distribuciones conjuntas de múltiples variables</li>
+                    <li>Trabajar con distribuciones marginales y condicionales</li>
+                    <li>Comprender dependencia e independencia entre variables</li>
+                    <li>Calcular covarianza y correlación</li>
+                    <li>Aplicar transformaciones a vectores aleatorios</li>
+                </ul>
+            </div>
+
+            <h2>4.1 Distribución Conjunta</h2>
+
+            <div class="definition">
+                <strong>Definición 4.1.1:</strong> Para un vector aleatorio $\mathbf{X} = (X_1, \ldots, X_n)$, la <strong>función de distribución conjunta</strong> es:
+                $$F_{\mathbf{X}}(x_1, \ldots, x_n) = P(X_1 \leq x_1, \ldots, X_n \leq x_n)$$
+
+                Para variables continuas, la <strong>función de densidad conjunta</strong> es:
+                $$f_{\mathbf{X}}(x_1, \ldots, x_n) = \frac{\partial^n F_{\mathbf{X}}}{\partial x_1 \cdots \partial x_n}$$
+            </div>
+
+            <div class="theorem">
+                <strong>Propiedades de la densidad conjunta:</strong>
+                <ol>
+                    <li>$f_{\mathbf{X}}(\mathbf{x}) \geq 0$ para todo $\mathbf{x}$</li>
+                    <li>$\int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} f_{\mathbf{X}}(\mathbf{x}) d\mathbf{x} = 1$</li>
+                    <li>$P(\mathbf{X} \in A) = \int \cdots \int_A f_{\mathbf{X}}(\mathbf{x}) d\mathbf{x}$</li>
+                </ol>
+            </div>
+
+            <h2>4.2 Distribuciones Marginales</h2>
+
+            <div class="definition">
+                <strong>Definición 4.2.1:</strong> La <strong>distribución marginal</strong> de $X_i$ se obtiene integrando sobre todas las demás variables:
+                $$f_{X_i}(x_i) = \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} f_{\mathbf{X}}(x_1, \ldots, x_n) dx_1 \cdots dx_{i-1} dx_{i+1} \cdots dx_n$$
+            </div>
+
+            <div class="example">
+                <strong>Ejemplo 4.2.1:</strong> Para $(X, Y)$ con densidad conjunta $f_{X,Y}(x, y)$:
+                $$f_X(x) = \int_{-\infty}^{\infty} f_{X,Y}(x, y) dy$$
+                $$f_Y(y) = \int_{-\infty}^{\infty} f_{X,Y}(x, y) dx$$
+            </div>
+
+            <h2>4.3 Distribuciones Condicionales</h2>
+
+            <div class="definition">
+                <strong>Definición 4.3.1:</strong> Para variables continuas, la <strong>densidad condicional</strong> de $X$ dado $Y = y$ es:
+                $$f_{X|Y}(x|y) = \frac{f_{X,Y}(x, y)}{f_Y(y)} \quad \text{si } f_Y(y) > 0$$
+            </div>
+
+            <h2>4.4 Independencia de Variables Aleatorias</h2>
+
+            <div class="definition">
+                <strong>Definición 4.4.1:</strong> Las variables $X_1, \ldots, X_n$ son <strong>independientes</strong> si:
+                $$f_{\mathbf{X}}(x_1, \ldots, x_n) = f_{X_1}(x_1) \cdot f_{X_2}(x_2) \cdots f_{X_n}(x_n)$$
+                para toda $\mathbf{x}$.
+            </div>
+
+            <div class="theorem">
+                <strong>Caracterización de independencia:</strong> $X_1, \ldots, X_n$ son independientes si y sólo si:
+                $$F_{\mathbf{X}}(x_1, \ldots, x_n) = F_{X_1}(x_1) \cdot \ldots \cdot F_{X_n}(x_n)$$
+            </div>
+
+            <h2>4.5 Covarianza y Correlación</h2>
+
+            <div class="definition">
+                <strong>Definición 4.5.1:</strong> La <strong>covarianza</strong> entre $X$ e $Y$ es:
+                $$\text{Cov}(X, Y) = E[(X - E[X])(Y - E[Y])] = E[XY] - E[X]E[Y]$$
+            </div>
+
+            <div class="definition">
+                <strong>Definición 4.5.2:</strong> El <strong>coeficiente de correlación</strong> es:
+                $$\rho_{X,Y} = \text{Corr}(X, Y) = \frac{\text{Cov}(X, Y)}{\sqrt{\text{Var}(X) \cdot \text{Var}(Y)}}$$
+                con $-1 \leq \rho_{X,Y} \leq 1$.
+            </div>
+
+            <div class="theorem">
+                <strong>Propiedades:</strong>
+                <ol>
+                    <li>Si $X, Y$ independientes, entonces $\text{Cov}(X, Y) = 0$ (pero lo inverso no siempre es cierto)</li>
+                    <li>$\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y) + 2\text{Cov}(X, Y)$</li>
+                    <li>$\rho_{X,Y} = 1$ sii $Y = aX + b$ con $a > 0$</li>
+                    <li>$\rho_{X,Y} = -1$ sii $Y = aX + b$ con $a < 0$</li>
+                </ol>
+            </div>
+
+            <h2>4.6 Distribución Multinomial</h2>
+
+            <div class="definition">
+                <strong>Definición 4.6.1:</strong> Sea $(X_1, \ldots, X_k)$ con $\sum_{i=1}^k X_i = n$. Sigue una <strong>distribución Multinomial</strong> si:
+                $$P(X_1 = n_1, \ldots, X_k = n_k) = \frac{n!}{n_1! \cdots n_k!} p_1^{n_1} \cdots p_k^{n_k}$$
+                donde $\sum p_i = 1$ y $\sum n_i = n$.
+                <br><br>
+                Notación: $(X_1, \ldots, X_k) \sim \text{Multinomial}(n; p_1, \ldots, p_k)$
+            </div>
+
+            <h2>4.7 Implementación en Python</h2>
+
+            <pre><code class="language-python">import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+
+# 1. Bivariada con correlación
+np.random.seed(42)
+n = 1000
+X = np.random.normal(0, 1, n)
+rho = 0.7
+Y = rho * X + np.sqrt(1 - rho**2) * np.random.normal(0, 1, n)
+
+# Verificar correlación
+cov_matrix = np.cov(X, Y)
+print("Matriz de Covarianza:")
+print(cov_matrix)
+print(f"\nCovarianza teórica = {rho:.3f}")
+print(f"Covarianza empírica = {cov_matrix[0,1]:.3f}")
+
+# Visualizar
+plt.figure(figsize=(8, 8))
+plt.scatter(X, Y, alpha=0.5)
+plt.xlabel('X')
+plt.ylabel(f'Y (ρ = {rho})')
+plt.title(f'Variables bivariadas con correlación ρ = {rho}')
+plt.grid(True, alpha=0.3)
+plt.axis('equal')
+plt.xlim(-4, 4)
+plt.ylim(-4, 4)
+plt.show()
+
+# 2. Covarianza y correlación
+corr_coeff = np.corrcoef(X, Y)[0, 1]
+print(f"\nCoeficiente de correlación: {corr_coeff:.4f}")
+
+# 3. Distribución Multinomial
+n_trials = 1000
+p = [0.2, 0.3, 0.5]  # Probabilidades para 3 categorías
+rv = stats.multinomial(n_trials, p)
+samples = rv.rvs(100)  # 100 muestras
+
+print(f"\nMultinomial({n_trials}; 0.2, 0.3, 0.5):")
+print(f"Categoría 1: E[X₁] = {n_trials * p[0]:.1f}, empírico = {np.mean(samples[:, 0]):.1f}")
+print(f"Categoría 2: E[X₂] = {n_trials * p[1]:.1f}, empírico = {np.mean(samples[:, 1]):.1f}")
+print(f"Categoría 3: E[X₃] = {n_trials * p[2]:.1f}, empírico = {np.mean(samples[:, 2]):.1f}")
+
+# 4. Independencia
+# Verificar que variables independientes tienen correlación ≈ 0
+X_ind = np.random.normal(0, 1, 1000)
+Y_ind = np.random.normal(0, 1, 1000)  # Independiente de X
+
+corr_ind = np.corrcoef(X_ind, Y_ind)[0, 1]
+print(f"\nCorrelación entre variables independientes: {corr_ind:.4f}")
+print("(Debe estar cerca de 0)")
+
+# 5. Transformación: suma de variables independientes
+n = 10000
+U1 = np.random.uniform(0, 1, n)
+U2 = np.random.uniform(0, 1, n)
+S = U1 + U2  # Suma de dos uniformes
+
+# La distribución de suma de dos U(0,1) es triangular
+plt.figure(figsize=(10, 5))
+plt.hist(S, bins=50, density=True, alpha=0.7, label='Simulada')
+
+# PDF teórica de triangular
+x_tri = np.linspace(0, 2, 100)
+pdf_tri = np.where(x_tri <= 1, x_tri, 2 - x_tri)
+plt.plot(x_tri, pdf_tri, 'r-', lw=2, label='Teórica')
+
+plt.xlabel('S = U₁ + U₂')
+plt.ylabel('Densidad')
+plt.title('Distribución de suma de dos Uniformes(0,1)')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()</code>

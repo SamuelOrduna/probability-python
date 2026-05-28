@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo 3: Distribuciones Importantes | ITAM Maestría</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.8.0/build/styles/atom-one-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.8.0/build/highlight.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="../index.html" class="logo">📊 Probabilidad Maestría ITAM</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../libros.html">Libros</a></li>
+                <li><a href="../ejercicios.html">Ejercicios</a></li>
+                <li><a href="https://github.com/SamuelOrduna/probability-python" target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <aside class="sidebar">
+            <div class="sidebar-title">Capítulos</div>
+            <ul class="chapters-list">
+                <li><a href="cap1-fundamentos.html">I. Fundamentos</a></li>
+                <li><a href="cap2-variables.html">II. Variables Aleatorias</a></li>
+                <li><a href="cap3-distribuciones.html" class="active">III. Distribuciones</a></li>
+                <li><a href="cap4-multivariadas.html">IV. Multivariadas</a></li>
+                <li><a href="cap5-normal-multivariada.html">V. Normal Multivariada</a></li>
+            </ul>
+        </aside>
+
+        <div class="content">
+            <h1>Capítulo 3: Distribuciones Importantes</h1>
+
+            <div class="objectives">
+                <div class="objectives-title">Objetivos del Capítulo</div>
+                <ul>
+                    <li>Dominar distribuciones discretas clásicas</li>
+                    <li>Entender distribuciones continuas fundamentales</li>
+                    <li>Aplicar distribuciones a problemas reales</li>
+                    <li>Comparar y relacionar diferentes distribuciones</li>
+                    <li>Trabajar con funciones generatrices de momentos</li>
+                </ul>
+            </div>
+
+            <h2>3.1 Distribuciones Discretas</h2>
+
+            <h3>3.1.1 Distribución Bernoulli</h3>
+
+            <div class="definition">
+                <strong>Definición 3.1.1:</strong> Una variable aleatoria $X$ sigue una <strong>distribución Bernoulli</strong> con parámetro $p \in [0,1]$ si:
+                $$P(X = k) = p^k (1-p)^{1-k} \quad k \in \{0, 1\}$$
+                Notación: $X \sim \text{Bernoulli}(p)$
+                <br><br>
+                <strong>Propiedades:</strong> $E[X] = p$, $\text{Var}(X) = p(1-p)$
+            </div>
+
+            <h3>3.1.2 Distribución Binomial</h3>
+
+            <div class="definition">
+                <strong>Definición 3.1.2:</strong> Una variable aleatoria $X$ sigue una <strong>distribución Binomial</strong> si:
+                $$P(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \quad k \in \{0, 1, \ldots, n\}$$
+                Notación: $X \sim \text{Binomial}(n, p)$
+                <br><br>
+                <strong>Interpretación:</strong> Número de éxitos en $n$ ensayos Bernoulli independientes.
+                <br><br>
+                <strong>Propiedades:</strong> $E[X] = np$, $\text{Var}(X) = np(1-p)$
+            </div>
+
+            <h3>3.1.3 Distribución Poisson</h3>
+
+            <div class="definition">
+                <strong>Definición 3.1.3:</strong> Una variable aleatoria $X$ sigue una <strong>distribución Poisson</strong> con parámetro $\lambda > 0$ si:
+                $$P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!} \quad k \in \{0, 1, 2, \ldots\}$$
+                Notación: $X \sim \text{Poisson}(\lambda)$
+                <br><br>
+                <strong>Propiedades:</strong> $E[X] = \lambda$, $\text{Var}(X) = \lambda$
+            </div>
+
+            <div class="theorem">
+                <strong>Aproximación Binomial a Poisson:</strong> Si $n \to \infty$ y $p \to 0$ tal que $np = \lambda$ constante, entonces $\text{Binomial}(n, p) \to \text{Poisson}(\lambda)$.
+            </div>
+
+            <h2>3.2 Distribuciones Continuas</h2>
+
+            <h3>3.2.1 Distribución Uniforme</h3>
+
+            <div class="definition">
+                <strong>Definición 3.2.1:</strong> Una variable aleatoria $X$ sigue una <strong>distribución Uniforme</strong> en $[a, b]$ si:
+                $$f_X(x) = \begin{cases} \frac{1}{b-a} & \text{si } x \in [a, b] \\ 0 & \text{en otro caso} \end{cases}$$
+                Notación: $X \sim \text{Uniforme}(a, b)$
+                <br><br>
+                <strong>Propiedades:</strong> $E[X] = \frac{a+b}{2}$, $\text{Var}(X) = \frac{(b-a)^2}{12}$
+            </div>
+
+            <h3>3.2.2 Distribución Normal (Gaussiana)</h3>
+
+            <div class="definition">
+                <strong>Definición 3.2.2:</strong> Una variable aleatoria $X$ sigue una <strong>distribución Normal</strong> con parámetros $\mu$ y $\sigma^2$ si:
+                $$f_X(x) = \frac{1}{\sigma\sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)$$
+                Notación: $X \sim N(\mu, \sigma^2)$
+                <br><br>
+                <strong>Propiedades:</strong> $E[X] = \mu$, $\text{Var}(X) = \sigma^2$
+            </div>
+
+            <div class="theorem">
+                <strong>Estandarización:</strong> Si $X \sim N(\mu, \sigma^2)$, entonces $Z = \frac{X - \mu}{\sigma} \sim N(0, 1)$ (normal estándar).
+            </div>
+
+            <h3>3.2.3 Distribución Exponencial</h3>
+
+            <div class="definition">
+                <strong>Definición 3.2.3:</strong> Una variable aleatoria $X$ sigue una <strong>distribución Exponencial</strong> con parámetro $\lambda > 0$ si:
+                $$f_X(x) = \begin{cases} \lambda e^{-\lambda x} & \text{si } x \geq 0 \\ 0 & \text{en otro caso} \end{cases}$$
+                Notación: $X \sim \text{Exponencial}(\lambda)$
+                <br><br>
+                <strong>Propiedades:</strong> $E[X] = \frac{1}{\lambda}$, $\text{Var}(X) = \frac{1}{\lambda^2}$
+                <br><br>
+                <strong>Propiedad sin memoria:</strong> $P(X > s + t | X > s) = P(X > t)$ para $s, t \geq 0$
+            </div>
+
+            <h3>3.2.4 Distribución Gamma</h3>
+
+            <div class="definition">
+                <strong>Definición 3.2.4:</strong> Una variable aleatoria $X$ sigue una <strong>distribución Gamma</strong> con parámetros de forma $\alpha > 0$ y escala $\beta > 0$ si:
+                $$f_X(x) = \frac{1}{\beta^\alpha \Gamma(\alpha)} x^{\alpha-1} e^{-x/\beta} \quad x > 0$$
+                Notación: $X \sim \text{Gamma}(\alpha, \beta)$
+                <br><br>
+                <strong>Propiedades:</strong> $E[X] = \alpha\beta$, $\text{Var}(X) = \alpha\beta^2$
+            </div>
+
+            <h2>3.3 Función Generadora de Momentos (MGF)</h2>
+
+            <div class="definition">
+                <strong>Definición 3.3.1:</strong> La <strong>función generadora de momentos</strong> de una variable aleatoria $X$ es:
+                $$M_X(t) = E[e^{tX}]$$
+                definida para $t$ en una vecindad de 0.
+            </div>
+
+            <div class="theorem">
+                <strong>Propiedad generadora:</strong> Si $M_X(t)$ existe en una vecindad de 0:
+                $$M_X^{(n)}(0) = E[X^n] \quad \text{para } n = 1, 2, 3, \ldots$$
+            </div>
+
+            <h2>3.4 Implementación en Python</h2>
+
+            <pre><code class="language-python">import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+
+# 1. Comparación Binomial vs Poisson
+n, p = 100, 0.03
+lambda_param = n * p
+
+x_vals = np.arange(0, 10)
+pmf_binom = stats.binom.pmf(x_vals, n, p)
+pmf_poisson = stats.poisson.pmf(x_vals, lambda_param)
+
+plt.figure(figsize=(10, 5))
+plt.bar(x_vals - 0.2, pmf_binom, width=0.4, label=f'Binomial({n}, {p})', alpha=0.7)
+plt.bar(x_vals + 0.2, pmf_poisson, width=0.4, label=f'Poisson({lambda_param})', alpha=0.7)
+plt.xlabel('k')
+plt.ylabel('P(X = k)')
+plt.legend()
+plt.title('Aproximación Binomial a Poisson')
+plt.grid(True, alpha=0.3)
+plt.show()
+
+# 2. Distribución Normal y estandarización
+mu, sigma = 100, 15
+X = stats.norm(mu, sigma)
+Z = stats.norm(0, 1)
+
+x_range = np.linspace(mu - 4*sigma, mu + 4*sigma, 200)
+pdf_x = X.pdf(x_range)
+
+plt.figure(figsize=(10, 5))
+plt.plot(x_range, pdf_x, 'b-', lw=2, label=f'N({mu}, {sigma}²)')
+plt.fill_between(x_range, pdf_x, alpha=0.3)
+plt.axvline(mu, color='red', linestyle='--', label=f'μ = {mu}')
+plt.axvline(mu - sigma, color='green', linestyle=':', label=f'μ ± σ')
+plt.axvline(mu + sigma, color='green', linestyle=':')
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.legend()
+plt.title('Distribución Normal')
+plt.grid(True, alpha=0.3)
+plt.show()
+
+# 3. Función Generadora de Momentos
+# Para Normal(0,1), M(t) = e^(t²/2)
+# E[X] = M'(0), E[X²] = M''(0), Var(X) = M''(0) - [M'(0)]²
+
+# Verificación numérica
+samples = np.random.normal(0, 1, 100000)
+print("Normal(0, 1):")
+print(f"E[X] empírico = {np.mean(samples):.4f}")
+print(f"E[X²] empírico = {np.mean(samples**2):.4f}")
+print(f"Var(X) empírico = {np.var(samples):.4f}")
+
+# 4. Propiedad sin memoria de Exponencial
+lambda_exp = 0.5
+X_exp = stats.expon(scale=1/lambda_exp)
+
+# P(X > 5 + 3 | X > 5) debería = P(X > 3)
+s, t = 5, 3
+prob_conditional = (1 - X_exp.cdf(s + t)) / (1 - X_exp.cdf(s))
+prob_direct = 1 - X_exp.cdf(t)
+
+print(f"\nPropiedad sin memoria Exponencial({lambda_exp}):")
+print(f"P(X > {s+t} | X > {s}) = {prob_conditional:.4f}")
+print(f"P(X > {t}) = {prob_direct:.4f}")
+print(f"Diferencia = {abs(prob_conditional - prob_direct):.6f}")</code>

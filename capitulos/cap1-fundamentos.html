@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo 1: Fundamentos de Probabilidad | ITAM Maestría</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.8.0/build/styles/atom-one-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.8.0/build/highlight.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="../index.html" class="logo">📊 Probabilidad Maestría ITAM</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../libros.html">Libros</a></li>
+                <li><a href="../ejercicios.html">Ejercicios</a></li>
+                <li><a href="https://github.com/SamuelOrduna/probability-python" target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <aside class="sidebar">
+            <div class="sidebar-title">Capítulos</div>
+            <ul class="chapters-list">
+                <li><a href="cap1-fundamentos.html" class="active">I. Fundamentos</a></li>
+                <li><a href="cap2-variables.html">II. Variables Aleatorias</a></li>
+                <li><a href="cap3-distribuciones.html">III. Distribuciones</a></li>
+                <li><a href="cap4-multivariadas.html">IV. Multivariadas</a></li>
+                <li><a href="cap5-normal-multivariada.html">V. Normal Multivariada</a></li>
+            </ul>
+        </aside>
+
+        <div class="content">
+            <h1>Capítulo 1: Fundamentos de Probabilidad</h1>
+
+            <div class="objectives">
+                <div class="objectives-title">Objetivos del Capítulo</div>
+                <ul>
+                    <li>Comprender los axiomas de Kolmogorov y sus implicaciones</li>
+                    <li>Dominar técnicas de conteo para espacios finitos</li>
+                    <li>Aprender probabilidad condicional e independencia de eventos</li>
+                    <li>Aplicar el Teorema de Bayes en contextos reales</li>
+                    <li>Trabajar con espacios de probabilidad abstractos</li>
+                </ul>
+            </div>
+
+            <h2>1.1 Espacios de Probabilidad y Axiomas</h2>
+
+            <div class="definition">
+                <strong>Definición 1.1.1:</strong> Un <strong>espacio de probabilidad</strong> es una terna $(\Omega, \mathcal{F}, P)$ donde:
+                <ul>
+                    <li>$\Omega$ es el <strong>espacio muestral</strong> (conjunto de todos los posibles resultados)</li>
+                    <li>$\mathcal{F}$ es una <strong>sigma-álgebra</strong> (colección de subconjuntos de $\Omega$ que llamamos eventos)</li>
+                    <li>$P: \mathcal{F} \to [0,1]$ es una <strong>medida de probabilidad</strong></li>
+                </ul>
+            </div>
+
+            <div class="definition">
+                <strong>Axiomas de Kolmogorov:</strong> La función $P$ debe satisfacer:
+                <ol>
+                    <li>$P(A) \geq 0$ para todo $A \in \mathcal{F}$</li>
+                    <li>$P(\Omega) = 1$</li>
+                    <li>Para eventos $A_1, A_2, \ldots$ disjuntos en $\mathcal{F}$: $$P\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} P(A_i)$$</li>
+                </ol>
+            </div>
+
+            <h2>1.2 Propiedades Fundamentales</h2>
+
+            <div class="theorem">
+                <strong>Teorema 1.2.1:</strong> Sea $(\Omega, \mathcal{F}, P)$ un espacio de probabilidad. Entonces:
+                <ol>
+                    <li>$P(\emptyset) = 0$</li>
+                    <li>$P(A^c) = 1 - P(A)$ para todo $A \in \mathcal{F}$</li>
+                    <li>$P(A \cup B) = P(A) + P(B) - P(A \cap B)$ para $A, B \in \mathcal{F}$</li>
+                    <li>Si $A \subseteq B$, entonces $P(A) \leq P(B)$</li>
+                </ol>
+            </div>
+
+            <h2>1.3 Técnicas de Conteo</h2>
+
+            <p>Para espacios finitos, la probabilidad de un evento es el cociente entre casos favorables y casos totales.</p>
+
+            <div class="definition">
+                <strong>Principio Multiplicativo:</strong> Si un experimento consta de $k$ etapas, donde la $i$-ésima etapa tiene $n_i$ posibilidades, el número total de resultados es:
+                $$N = n_1 \cdot n_2 \cdot \ldots \cdot n_k$$
+            </div>
+
+            <div class="example">
+                <strong>Ejemplo 1.3.1:</strong> Permutaciones. El número de formas de ordenar $n$ objetos distintos es:
+                $$P(n) = n! = n \cdot (n-1) \cdot \ldots \cdot 1$$
+
+                El número de formas de seleccionar $k$ objetos de $n$ donde el orden importa es:
+                $$P(n,k) = \frac{n!}{(n-k)!}$$
+            </div>
+
+            <div class="example">
+                <strong>Ejemplo 1.3.2:</strong> Combinaciones. El número de formas de seleccionar $k$ objetos de $n$ donde el orden NO importa es:
+                $$\binom{n}{k} = \frac{n!}{k!(n-k)!}$$
+            </div>
+
+            <h2>1.4 Probabilidad Condicional</h2>
+
+            <div class="definition">
+                <strong>Definición 1.4.1:</strong> Sean $A, B \in \mathcal{F}$ con $P(B) > 0$. La <strong>probabilidad condicional</strong> de $A$ dado $B$ es:
+                $$P(A|B) = \frac{P(A \cap B)}{P(B)}$$
+            </div>
+
+            <div class="theorem">
+                <strong>Regla de la Cadena:</strong> Para eventos $A_1, A_2, \ldots, A_n$:
+                $$P(A_1 \cap A_2 \cap \ldots \cap A_n) = P(A_1) \cdot P(A_2|A_1) \cdot P(A_3|A_1 \cap A_2) \cdots P(A_n|A_1 \cap \ldots \cap A_{n-1})$$
+            </div>
+
+            <h2>1.5 Independencia de Eventos</h2>
+
+            <div class="definition">
+                <strong>Definición 1.5.1:</strong> Dos eventos $A$ y $B$ son <strong>independientes</strong> si:
+                $$P(A \cap B) = P(A) \cdot P(B)$$
+
+                De manera equivalente, si $P(B) > 0$: $P(A|B) = P(A)$
+            </div>
+
+            <div class="definition">
+                <strong>Definición 1.5.2:</strong> Los eventos $A_1, A_2, \ldots, A_n$ son <strong>mutuamente independientes</strong> si para todo subconjunto $\{i_1, \ldots, i_k\} \subseteq \{1, \ldots, n\}$:
+                $$P\left(\bigcap_{j=1}^{k} A_{i_j}\right) = \prod_{j=1}^{k} P(A_{i_j})$$
+            </div>
+
+            <h2>1.6 Teorema de Bayes</h2>
+
+            <div class="theorem">
+                <strong>Ley de Probabilidad Total:</strong> Si $B_1, B_2, \ldots, B_n$ es una partición de $\Omega$ (eventos disjuntos que cubren $\Omega$), entonces:
+                $$P(A) = \sum_{i=1}^{n} P(A|B_i) \cdot P(B_i)$$
+            </div>
+
+            <div class="theorem">
+                <strong>Teorema de Bayes:</strong> Con la notación anterior:
+                $$P(B_i|A) = \frac{P(A|B_i) \cdot P(B_i)}{\sum_{j=1}^{n} P(A|B_j) \cdot P(B_j)}$$
+            </div>
+
+            <div class="example">
+                <strong>Ejemplo 1.6.1:</strong> Prueba diagnóstica. Una enfermedad afecta al 1% de la población. Una prueba tiene 99% de sensibilidad (detecta el 99% de enfermos) y 98% de especificidad (da negativo en el 98% de sanos).
+                <br><br>
+                Si una persona da positivo en la prueba, ¿cuál es la probabilidad de que realmente esté enferma?
+                <br><br>
+                Sean: $D$ = "tener la enfermedad", $+$ = "resultado positivo"
+                <ul>
+                    <li>$P(D) = 0.01$, $P(D^c) = 0.99$</li>
+                    <li>$P(+|D) = 0.99$, $P(+|D^c) = 0.02$</li>
+                    <li>$P(D|+) = \frac{0.99 \cdot 0.01}{0.99 \cdot 0.01 + 0.02 \cdot 0.99} = \frac{0.0099}{0.0297} \approx 0.333$</li>
+                </ul>
+                A pesar de que la prueba es confiable, el resultado positivo da solo ~33% de probabilidad de realmente tener la enfermedad.
+            </div>
+
+            <h2>1.7 Implementación en Python</h2>
+
+            <p>Veamos cómo implementar conceptos de probabilidad básica en Python:</p>
+
+            <pre><code class="language-python">import numpy as np
+from itertools import combinations, permutations
+from math import factorial, comb
+
+# Conteo combinatorio
+n, k = 10, 3
+
+# Permutaciones
+def perm(n, k):
+    return factorial(n) // factorial(n - k)
+
+print(f"P(10,3) = {perm(10, 3)}")  # 720
+
+# Combinaciones (usando la función built-in)
+print(f"C(10,3) = {comb(10, 3)}")  # 120
+
+# Paradoja del Cumpleaños
+def birthday_paradox(n_people):
+    """Probabilidad de que al menos 2 personas
+    compartan cumpleaños en grupo de n_people"""
+    if n_people > 365:
+        return 1.0
+    prob_different = 1.0
+    for i in range(n_people):
+        prob_different *= (365 - i) / 365
+    return 1 - prob_different
+
+for n in [20, 23, 30, 50]:
+    prob = birthday_paradox(n)
+    print(f"n={n}: P(compartir cumpleaños) = {prob:.4f}")
+
+# Teorema de Bayes: Ejemplo de prueba médica
+def bayes_medical_test(p_disease, sensitivity, specificity):
+    """
+    Calcula P(enfermedad | resultado positivo)
+    """
+    p_positive_given_disease = sensitivity
+    p_positive_given_healthy = 1 - specificity
+    p_healthy = 1 - p_disease
+
+    # Probabilidad total de positivo
+    p_positive = (p_positive_given_disease * p_disease +
+                  p_positive_given_healthy * p_healthy)
+
+    # Bayes
+    p_disease_given_positive = (p_positive_given_disease * p_disease) / p_positive
+
+    return p_disease_given_positive
+
+result = bayes_medical_test(0.01, 0.99, 0.98)
+print(f"\nP(enfermedad | +) = {result:.4f}")  # 0.3333
+
+# Simulación de eventos independientes
+def simulate_independent_events(n_trials=10000):
+    """Simula P(A ∩ B) para eventos independientes"""
+    np.random.seed(42)
+
+    # Evento A: resultado de dado > 3 (P(A) = 0.5)
+    # Evento B: moneda sale cara (P(B) = 0.5)
+
+    dice_rolls = np.random.randint(1, 7, n_trials)
+    coin_flips = np.random.randint(0, 2, n_trials)
+
+    A = dice_rolls > 3  # P(A) ≈ 0.5
+    B = coin_flips == 1  # P(B) ≈ 0.5
+
+    p_a = np.mean(A)
+    p_b = np.mean(B)
+    p_a_and_b = np.mean(A & B)
+
+    print(f"\nSimulación de independencia:")
+    print(f"P(A) = {p_a:.4f}")
+    print(f"P(B) = {p_b:.4f}")
+    print(f"P(A ∩ B) = {p_a_and_b:.4f}")
+    print(f"P(A) × P(B) = {p_a * p_b:.4f}")
+    print(f"Diferencia = {abs(p_a_and_b - p_a * p_b):.4f}")
+
+simulate_independent_events()</code>
